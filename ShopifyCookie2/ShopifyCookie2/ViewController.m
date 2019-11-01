@@ -257,6 +257,7 @@
             NSHTTPCookiePath : @"/",
             NSHTTPCookieValue : @"",
             NSHTTPCookieVersion : @(1),
+            NSHTTPCookieOriginURL : @""
         }
     ];
     

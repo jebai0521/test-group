@@ -1,0 +1,69 @@
+http
+
+home
+secure_customer_sig=; path=/; expires=Sat, 29 Oct 2039 08:40:52 -0000; secure; HttpOnly, _landing_page=%2Fpassword; Expires=Tue, 12-Nov-19 08:40:52 GMT; Path=/; HttpOnly, _orig_referrer=; Expires=Tue, 12-Nov-19 08:40:52 GMT; Path=/; HttpOnly, cart_sig=; path=/; expires=Tue, 12 Nov 2019 09:40:52 -0000; HttpOnly"
+
+
+019-10-29 16:42:19.598015+0800 ShopifyCookie3[31543:618057] =================  storage  ======================
+2019-10-29 16:42:19.598812+0800 ShopifyCookie3[31543:618057] {
+    Created = 594031252;
+    Domain = "pstore-kimi.myshopify.com";
+    Expires = "2021-10-28 20:19:16 +0000";
+    Name = "_shopify_y";
+    Path = "/";
+    Value = "19e87d1e-305b-4a6f-a18a-80f875805607";
+}
+2019-10-29 16:42:19.598928+0800 ShopifyCookie3[31543:618057] =================  storage  ======================
+2019-10-29 16:42:19.599071+0800 ShopifyCookie3[31543:618057] {
+    Created = 594031252;
+    Domain = "pstore-kimi.myshopify.com";
+    Expires = "2039-10-29 08:40:52 +0000";
+    HttpOnly = TRUE;
+    Name = "secure_customer_sig";
+    Path = "/";
+    Secure = TRUE;
+    Value = "";
+}
+2019-10-29 16:42:19.599145+0800 ShopifyCookie3[31543:618057] =================  storage  ======================
+2019-10-29 16:42:19.599290+0800 ShopifyCookie3[31543:618057] {
+    Created = 594031252;
+    Domain = "pstore-kimi.myshopify.com";
+    Expires = "2019-11-12 08:40:52 +0000";
+    HttpOnly = TRUE;
+    Name = "_landing_page";
+    Path = "/";
+    Value = "%2Fpassword";
+}
+2019-10-29 16:42:19.599355+0800 ShopifyCookie3[31543:618057] =================  storage  ======================
+2019-10-29 16:42:19.599469+0800 ShopifyCookie3[31543:618057] {
+    Created = 594031252;
+    Domain = "pstore-kimi.myshopify.com";
+    Expires = "2019-11-12 08:40:52 +0000";
+    HttpOnly = TRUE;
+    Name = "_orig_referrer";
+    Path = "/";
+    Value = "";
+}
+2019-10-29 16:42:19.602158+0800 ShopifyCookie3[31543:618057] =================  storage  ======================
+2019-10-29 16:42:19.602290+0800 ShopifyCookie3[31543:618057] {
+    Created = 594031252;
+    Domain = "pstore-kimi.myshopify.com";
+    Expires = "2019-11-12 09:40:52 +0000";
+    HttpOnly = TRUE;
+    Name = "cart_sig";
+    Path = "/";
+    Value = "";
+}
+2019-10-29 16:42:19.602366+0800 ShopifyCookie3[31543:618057] =================  storage  ======================
+2019-10-29 16:42:19.602489+0800 ShopifyCookie3[31543:618057] {
+    Created = 594031252;
+    Domain = ".myshopify.com";
+    Expires = "2020-10-28 08:40:52 +0000";
+    HttpOnly = TRUE;
+    Name = "__cfduid";
+    Path = "/";
+    Value = d07cc18a8ac08def1a4f858749a5cb6d31572338452;
+}
+
+
+password

@@ -37,125 +37,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      source: null,
+      source: {uri: 'https://www.baidu.com/'},
     };
   }
 
-  onAxios0 = () => {
-    Axios({
-      method: 'get',
-      url: 'https://pstore-kimi.myshopify.com/',
-      maxRedirects: 0,
-    })
-      .then(function(response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function() {
-        CookieManager.get('https://pstore-kimi.myshopify.com/', false).then(
-          res => {
-            console.log('CookieManager.get =>', res);
-          },
-        );
-      });
-  };
-
-  onAxios1 = () => {
-    Axios({
-      method: 'post',
-      url: 'https://pstore-kimi.myshopify.com/password',
-      data: JSON.stringify({
-        password: 'hl88',
-      }),
-      headers: {'Content-Type': 'application/json'},
-    })
-      .then(function(response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function() {
-        CookieManager.get('https://pstore-kimi.myshopify.com/', false).then(
-          res => {
-            console.log('CookieManager.get =>', res);
-          },
-        );
-      });
-  };
-
-  onAxios2 = () => {
-    Axios({
-      method: 'post',
-      url: 'https://pstore-kimi.myshopify.com/account/login',
-      data: JSON.stringify({
-        customer: {
-          email: 'mingchen@waveo.com',
-          password: '!QAZ@WSX#EDC$RFV',
-        },
-      }),
-      headers: {'Content-Type': 'application/json'},
-    })
-      .then(function(response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function() {
-        CookieManager.get('https://pstore-kimi.myshopify.com/', false)
-          .then(cookies => {
-            console.log('CookieManager.get =>', cookies);
-
-            Object.values(cookies).forEach(c => {
-              // if (!c.domain && host) {
-              //   c.domain = host;
-              // }
-              // if (!c.origin && host) {
-              //   c.origin = host;
-              // }
-
-              // cookiesToSet.push(c);
-              CookieManager.set(c, true);
-            });
-          })
-          .then();
-      });
-  };
-
-  onRP = () => {
-    Alert.alert('11', '22');
-  };
-
-  loadView = () => {
-    this.setState({
-      source: {uri: 'https://perkd-dev.myshopify.com'},
-    });
-  };
-
-  onFetch = () => {
-    Alert.alert('11', '22');
-
-    fetch('https://pstore-kimi.myshopify.com/', {redirect: 'manual'})
-      .then(function(response) {
-        console.log(response.headers);
-        return response.text();
-      })
-      .then(function(myJson) {
-        // console.log(myJson);
-      });
-  };
-
   sso = async () => {
-    const shop = 'samsonite-sg';
+    const shop = 'perkd-dev';
     const store = `${shop}.myshopify.com`;
     const email = '8357581722@qq.com';
     const first_name = 'WEN';
@@ -169,7 +56,8 @@ class App extends React.Component {
     var requests = [
       {
         method: 'get',
-        url: `https://76d9514a.ngrok.io/perkd/verify?shop=${store}&email=${email}&first_name=${first_name}&last_name=${last_name}`,
+        // url: `https://76d9514a.ngrok.io/perkd/verify?shop=${store}&email=${email}&first_name=${first_name}&last_name=${last_name}`,
+        url: `https://mcdev.perkd.me/perkd/verify?shop=${store}&email=${email}&first_name=${first_name}&last_name=${last_name}`,
         headers: {'Content-Type': 'application/json'},
         handler: function(result) {
           console.log(result);
@@ -198,7 +86,9 @@ class App extends React.Component {
 
     try {
       for (let i = 0; i < requests.length; i++) {
+        console.log(requests[i]);
         const result = await Axios(requests[i]);
+        console.log(result);
         if (requests[i].handler) {
           requests[i].handler(result);
         }
@@ -209,9 +99,17 @@ class App extends React.Component {
     }
     console.log('request success', customer);
 
-    // const cookies = await CookieManager.get(
+    const cookies = await CookieManager.get(
+      `https://${shop}.myshopify.com/`,
+      false,
+    );
+
+    console.log('cookies ==> ', cookies);
+
+    // await CookieManager.clearAll(true);
+
+    // await CookieManager.rewriteCookiesToWebkit(
     //   `https://${shop}.myshopify.com/`,
-    //   false,
     // );
 
     // const keys = Object.values(cookies);
@@ -223,12 +121,6 @@ class App extends React.Component {
     // this.setState({
     //   source: {uri: `https://${shop}.myshopify.com/`},
     // });
-
-    await CookieManager.clearAll(true);
-
-    await CookieManager.rewriteCookiesToWebkit(
-      `https://${shop}.myshopify.com/`,
-    );
 
     // const result = await CookieManager.get(
     //   `https://${shop}.myshopify.com/`,
@@ -285,6 +177,10 @@ class App extends React.Component {
     //   });
   };
 
+  cleanCookie = () => {
+    CookieManager.cleanCookie();
+  };
+
   render() {
     return (
       <View>
@@ -294,10 +190,7 @@ class App extends React.Component {
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
             <View style={styles.body}>
-              {/* <Button onPress={this.onAxios0} title="Axios0" />
-              <Button onPress={this.onAxios1} title="Axios1" />
-              <Button onPress={this.onAxios2} title="Axios2" />
-              <Button onPress={this.loadView} title="Fetch" /> */}
+              <Button onPress={this.sso} title="cleanCookie" />
               <Button onPress={this.sso} title="SSO" />
               <WebView
                 useWebKit
@@ -318,7 +211,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lighter,
   },
   webview: {
-    height: 400,
+    height: 800,
+    // flex: 1,
     backgroundColor: 'red',
   },
   engine: {
@@ -327,6 +221,7 @@ const styles = StyleSheet.create({
   },
   body: {
     backgroundColor: Colors.white,
+    flexDirection: 'column',
   },
   sectionContainer: {
     marginTop: 32,
